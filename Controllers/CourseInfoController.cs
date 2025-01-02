@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DbProject_School.Services;
+using DbProject_School.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DbProject_School
+namespace DbProject_School.Controllers
 {
     public class CourseInfoController
     {

@@ -20,11 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CustomModels\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Services\" />
-    <Folder Include="Utilities\" />
-  </ItemGroup>
-
 </Project>
