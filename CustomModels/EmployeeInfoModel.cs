@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DbProject_School
+namespace DbProject_School.CustomModels
 {
-    internal class EmployeeInfoModel
+    public class EmployeeInfoModel
     {
         public int EmployeeAmount { get; set; }
         public string EmployeeWorkRole { get; set; }

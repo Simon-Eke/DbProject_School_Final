@@ -9,8 +9,10 @@ namespace DbProject_School
 
             // ---------------- Hur många lärare jobbar på de olika avdelningarna? -------
 
-            EmployeeInfo employeeInfo = new();
-            employeeInfo.EmployeeAmountAtWorkRole();
+            using var employeeContext = new Data.DbProjectContext();
+            var employeeInfoService = new EmployeeInfoService(employeeContext);
+            var employeeInfoController = new EmployeeInfoController(employeeInfoService);
+            employeeInfoController.ListAllEmployeeInfo();
             Console.ReadLine();
 
             // ---------------- Visa en lista på alla (aktiva) kurser --------------------
