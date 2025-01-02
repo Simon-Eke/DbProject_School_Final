@@ -10,8 +10,8 @@ namespace DbProject_School
             // ---------------- Hur många lärare jobbar på de olika avdelningarna? -------
 
             using var employeeContext = new Data.DbProjectContext();
-            var employeeInfoService = new EmployeeInfoService(employeeContext);
-            var employeeInfoController = new EmployeeInfoController(employeeInfoService);
+            var employeeInfoService = new Services.EmployeeInfoService(employeeContext);
+            var employeeInfoController = new Controllers.EmployeeInfoController(employeeInfoService);
             employeeInfoController.ListAllEmployeeInfo();
             Console.ReadLine();
 
