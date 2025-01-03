@@ -18,7 +18,6 @@ namespace DbProject_School
         public int? AmountOfGrades { get; set; } // Optional: Helps clarify GPA accuracy
 
 
-
         // SSN contains some personal info that I dont want to display.
         public string DateOfBirth =>
             DateTime.TryParseExact(
