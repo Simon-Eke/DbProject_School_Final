@@ -18,7 +18,7 @@ namespace DbProject_School.Utilities
             {
                 // Using reflection to get property values
                 var maxColumnLength = Math.Max(models.Max(m => m.GetType().GetProperty(columnName).GetValue(m)?.ToString().Length ?? 0), columnName.Length);
-                columnWidths[columnName] = maxColumnLength + 1; // Add Padding
+                columnWidths[columnName] = maxColumnLength;
             }
 
             return columnWidths;
@@ -30,9 +30,10 @@ namespace DbProject_School.Utilities
             var sb = new StringBuilder();
             foreach (var columnName in columnNames)
             {
-                sb.Append(columnName.PadRight(columnWidths[columnName]));
+                sb.Append(columnName.PadRight(columnWidths[columnName]) + " | ");
             }
-            return sb.ToString();
+
+            return sb.ToString().TrimEnd(' ', '|'); // Remove the last unnecessary pipe
         }
 
         // Generic method to format model data with dynamic column widths
@@ -43,9 +44,9 @@ namespace DbProject_School.Utilities
             {
                 // Using reflection to get property values
                 var value = model.GetType().GetProperty(columnName)?.GetValue(model)?.ToString() ?? "N/A";
-                sb.Append(value.PadRight(columnWidths[columnName]));
+                sb.Append(value.PadRight(columnWidths[columnName]) + " | ");
             }
-            return sb.ToString();
+            return sb.ToString().TrimEnd(' ', '|'); // Removes the last unnecessary pipe symbol
         }
 
 

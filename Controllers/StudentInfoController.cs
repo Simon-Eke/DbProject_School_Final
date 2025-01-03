@@ -21,7 +21,12 @@ namespace DbProject_School.Controllers
         public void ListAllStudentInfo()
         {
             var students = _studentInfoService.GetStudentInfo();
-            StudentInfoFormatter.PrintStudentInfo(students);
+            // What columns do we want to display?
+            var studentColumns = new List<string> 
+            { "StudentId", "FirstName", "LastName", "DateOfBirth", "ClassName", "AvgGradeScore", "GradesAmount" };
+            // The class that formats the data
+            var studentInfoFormatter = new StudentInfoFormatter2();
+            studentInfoFormatter.PrintData(students, studentColumns);
         }
     }
 }

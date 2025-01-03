@@ -30,10 +30,10 @@ namespace DbProject_School.CustomModels
             : "N/A";
 
         // Display GPA with a fallback message if it's not available
-        public string DisplayGPA => GPA.HasValue ? GPA.Value.ToString("0.00") : "N/A"; // Shows "N/A" if GPA is null
+        public string AvgGradeScore => GPA.HasValue ? GPA.Value.ToString("0.00") : "N/A"; // Shows "N/A" if GPA is null
 
         // Display AmountOfGrades with a fallback message if it's not available
-        public string DisplayAmountOfGrades => AmountOfGrades.HasValue && AmountOfGrades.Value > 0
+        public string GradesAmount => AmountOfGrades.HasValue && AmountOfGrades.Value > 0
             ? AmountOfGrades.Value.ToString()
             : "N/A"; // Shows "N/A" if AmountOfGrades is 0 or not available
 
