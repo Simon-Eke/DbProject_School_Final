@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DbProject_School.CustomModels;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DbProject_School
+namespace DbProject_School.Services
 {
-    internal class StudentInfoService
+    public class StudentInfoService
     {
         private readonly Data.DbProjectContext _context;
 
@@ -16,7 +17,7 @@ namespace DbProject_School
         {
             _context = context;
         }
-        
+
         // I have chosen query syntax for the visual aspect and readability of the code.
         // Method Syntax becomes much more verbose.
         public List<StudentInfoModel> GetStudentInfo()
@@ -45,10 +46,10 @@ namespace DbProject_School
                                    SocialSecurityNumber = grouped.Key.SocialSecurityNumber,
                                    ClassName = grouped.Key.ClassName,
                                    // GPA calculation with fallback handling
-                                   GPA = grouped.Average(g => g.gradeMapping != null ? g.gradeMapping.NumericValue : (double?)null),
+                                   GPA = grouped.Average(g => g.gradeMapping != null ? g.gradeMapping.NumericValue : null),
 
                                    // Count only non-null grades
-                                   AmountOfGrades = grouped.Count(g => g.grade != null) > 0 ? grouped.Count(g => g.grade != null) : (int?)null // If no grades, set AmountOfGrades to null
+                                   AmountOfGrades = grouped.Count(g => g.grade != null) > 0 ? grouped.Count(g => g.grade != null) : null // If no grades, set AmountOfGrades to null
                                }).ToList();
 
             return studentInfo;
