@@ -8,6 +8,7 @@ namespace DbProject_School
         // TODO - Hide the connection string lol
         // TODO - Write somethings in the ReadMe file
         // TODO - Add the SQL-queries to the GitHub repo
+        // Add sufficient Comments
 
         static void Main(string[] args)
         {
