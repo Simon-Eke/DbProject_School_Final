@@ -21,7 +21,12 @@ namespace DbProject_School.Controllers
         public void ListAllCourseInfo()
         {
             var courses = _courseInfoService.GetCourseInfo();
-            CourseInfoFormatter.PrintCourseInfo(courses);
+            var courseColumns = new List<string> { "CourseId", "CourseName", "CourseSubject", "GradeStatus" };
+
+            var courseInfoFormatter = new CourseInfoFormatter();
+            courseInfoFormatter.PrintData(courses, courseColumns);
+
+            
         }
     }
 }

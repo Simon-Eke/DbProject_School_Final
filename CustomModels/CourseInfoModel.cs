@@ -13,6 +13,6 @@ namespace DbProject_School.CustomModels
         public string CourseSubject { get; set; }
         public int GradeCount { get; set; }
 
-        public string GradeStatus => GradeCount > 0 ? $"{GradeCount} grades" : "Not graded yet"; 
+        public string GradeStatus => GradeCount == 1 ? "1 grade" : (GradeCount > 0 ? $"{GradeCount} grades" : "N/A");
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DbProject_School.Utilities
 {
-    public class StudentInfoFormatter2 : BaseFormatter<StudentInfoModel>
+    public class StudentInfoFormatter : BaseFormatter<StudentInfoModel>
     {
         public override void PrintData(List<StudentInfoModel> students, List<string> columnNames)
         {

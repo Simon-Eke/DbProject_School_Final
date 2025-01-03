@@ -7,29 +7,23 @@ using System.Threading.Tasks;
 
 namespace DbProject_School.Utilities
 {
-    public class CourseInfoFormatter
+    public class CourseInfoFormatter : BaseFormatter<CourseInfoModel>
     {
-        // Format and print the Course Info
-        public static void PrintCourseInfo(List<CourseInfoModel> courses)
+        public override void PrintData(List<CourseInfoModel> courses, List<string> columnNames)
         {
-            // Determine the maximum lengths of the columns and the headers, with added spacing (+1)
-            int maxCourseIdLength = Math.Max(courses.Max(c => c.CourseId.ToString().Length), "CourseId".Length) + 1;
-            int maxCourseNameLength = Math.Max(courses.Max(c => c.CourseName.Length), "CourseName".Length) + 1;
-            int maxCourseSubjectLength = Math.Max(courses.Max(c => c.CourseSubject.Length), "CourseSubject".Length) + 1;
+            // Calculate the column Widths (Aka the padding needed to align the result)
+            var columnWidths = GetColumnWidths(courses, columnNames);
 
             // Write Headers
-            Console.WriteLine($"{"CourseId".PadRight(maxCourseIdLength)} " +
-                              $"{"CourseName".PadRight(maxCourseNameLength)} " +
-                              $"{"CourseSubject".PadRight(maxCourseSubjectLength)} " +
-                              $"GradeStatus\n");
+            Console.WriteLine(FormatHeader(columnWidths, columnNames));
 
-            // Write the columns
+            // Adjust the separator line length to match the sum of column widths (The "pipe symbol" of the last column is removed)
+            Console.WriteLine("\n" + new string('-', columnWidths.Values.Sum() + (columnNames.Count - 1) * 3) + "\n");
+
+            // Write the columns for each course
             foreach (var course in courses)
             {
-                Console.WriteLine($"{course.CourseId.ToString().PadRight(maxCourseIdLength)} " +
-                                  $"{course.CourseName.PadRight(maxCourseNameLength)} " +
-                                  $"{course.CourseSubject.PadRight(maxCourseSubjectLength)} " +
-                                  $"{course.GradeStatus}");
+                Console.WriteLine(FormatModelData(course, columnWidths, columnNames));
             }
         }
     }

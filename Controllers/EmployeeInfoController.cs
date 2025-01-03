@@ -21,7 +21,11 @@ namespace DbProject_School.Controllers
         public void ListAllEmployeeInfo()
         {
             var employees = _employeeInfoService.GetEmployeeInfo();
-            EmployeeInfoFormatter.PrintEmployeeInfo(employees);
+
+            var employeeColumns = new List<string> { "EmployeeAmount", "WorkRole" };
+
+            var employeeInfoFormatter = new EmployeeInfoFormatter();
+            employeeInfoFormatter.PrintData(employees, employeeColumns);
         }
     }
 }

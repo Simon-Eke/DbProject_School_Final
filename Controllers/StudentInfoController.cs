@@ -25,7 +25,7 @@ namespace DbProject_School.Controllers
             var studentColumns = new List<string> 
             { "StudentId", "FirstName", "LastName", "DateOfBirth", "ClassName", "AvgGradeScore", "GradesAmount" };
             // The class that formats the data
-            var studentInfoFormatter = new StudentInfoFormatter2();
+            var studentInfoFormatter = new StudentInfoFormatter();
             studentInfoFormatter.PrintData(students, studentColumns);
         }
     }

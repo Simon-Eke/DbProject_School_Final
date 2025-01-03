@@ -12,6 +12,6 @@ namespace DbProject_School.CustomModels
         public string EmployeeWorkRole { get; set; }
 
         // To ensure a plural form of the workRole when printed.
-        public string FormattedWorkRole => EmployeeAmount <= 1 ? $"{EmployeeWorkRole}" : $"{EmployeeWorkRole}s";
+        public string WorkRole => EmployeeAmount <= 1 ? $"{EmployeeWorkRole}" : $"{EmployeeWorkRole}s";
     }
 }

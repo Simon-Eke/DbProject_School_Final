@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace DbProject_School.Utilities
 {
-    // Format and print the Employee Info
-    public class EmployeeInfoFormatter
+    public class EmployeeInfoFormatter : BaseFormatter<EmployeeInfoModel>
     {
-        public static void PrintEmployeeInfo(List<EmployeeInfoModel> employees)
+        public override void PrintData(List<EmployeeInfoModel> employees, List<string> columnNames)
         {
-            // Determine the maximum lengths of the columns and the headers, with added spacing (+1)
-            int maxEmployeeAmountLength = Math.Max(employees.Max(e => e.EmployeeAmount.ToString().Length), "Amount".Length) + 1;
+            // Calculate the column Widths (Aka the padding needed to align the result)
+            var columnWidths = GetColumnWidths(employees, columnNames);
 
             // Write Headers
-            Console.WriteLine($"{"Amount".PadRight(maxEmployeeAmountLength)} " +
-                              $"WorkRole\n");
+            Console.WriteLine(FormatHeader(columnWidths, columnNames));
 
-            // Write Columns
+            // Adjust the separator line length to match the sum of column widths (The "pipe symbol" of the last column is removed)
+            Console.WriteLine("\n" + new string('-', columnWidths.Values.Sum() + (columnNames.Count - 1) * 3) + "\n");
+
+            // Write the columns for each employee
             foreach (var employee in employees)
             {
-                Console.WriteLine($"{employee.EmployeeAmount.ToString().PadRight(maxEmployeeAmountLength)} " +
-                                  $"{employee.FormattedWorkRole}");
+                Console.WriteLine(FormatModelData(employee, columnWidths, columnNames));
             }
         }
     }
