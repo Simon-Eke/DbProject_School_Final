@@ -7,7 +7,7 @@ namespace DbProject_School
         // TODO - Change the folder and classes within CustomModels to DTO - Data Transfer Object ?
         // TODO - Menu
         // TODO - Hide the connection string lol
-        // TODO - Finish up the StudentInfo classes
+        // TODO - Finish up the StudentInfo classes WIP
         // TODO - Try to make the formatting into a separate method
         // TODO - Write somethings in the ReadMe file
         // TODO - Add the SQL-queries to the GitHub repo
@@ -16,12 +16,22 @@ namespace DbProject_School
         {
             // ---------------- Visa information om alla elever --------------------------
 
+            using var studentContext = new Data.DbProjectContext();
+            // var studentInfoService = new Services.StudentInfoService(studentContext);
+            // var studentInfoController = new Controllers.StudentInfoController(studentInfoService);
+            // studentInfoController.ListAllStudentInfo();
+
+            Console.WriteLine("Press Enter to continue...");
+            Console.ReadLine();
+
             // ---------------- Hur många lärare jobbar på de olika avdelningarna? -------
 
             using var employeeContext = new Data.DbProjectContext();
             var employeeInfoService = new Services.EmployeeInfoService(employeeContext);
             var employeeInfoController = new Controllers.EmployeeInfoController(employeeInfoService);
             employeeInfoController.ListAllEmployeeInfo();
+
+            Console.WriteLine("Press Enter to continue...");
             Console.ReadLine();
 
             // ---------------- Visa en lista på alla (aktiva) kurser --------------------
@@ -42,6 +52,7 @@ namespace DbProject_School
             courseInfoController.ListAllCourseInfo();
 
             // Wait for the user to press Enter before closing the console window.
+            
             Console.ReadLine();
         }
     }
